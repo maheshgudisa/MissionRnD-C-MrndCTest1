@@ -56,10 +56,13 @@ int checkValid(node * dob){
 	else return 0;
 
 }
-
+int abs(int a){
+	if (a > 0)return a;
+	else return -a;
+}
 int between_days(struct node *date1head, struct node *date2head){
-	int res1, res2;
-	int dd = 0, mm = 0, yy = 0, i = 3;
+	int res1, res2,sum;
+	int dd = 0, mm = 0, yy = 0,dd1=0,mm1=0,yy1=0;
 	res1 = checkValid(date1head);
 	res2 = checkValid(date2head);
 	if (res1 == -1 || res2 == -1)return -1;
@@ -74,5 +77,24 @@ int between_days(struct node *date1head, struct node *date2head){
 		yy = yy * 10 + date1head->data;
 		date1head = date1head->next;
 	}
-	
+	dd1 = date2head->data;
+	date2head = date2head->next;
+	dd1 = dd1 * 10 + date2head->data;
+	mm1 = date2head->data;
+	date2head = date2head->next;
+	mm1= mm1 * 10 + date2head->data;
+	date2head = date2head->next;
+	while (date2head != NULL){
+		yy1 = yy1 * 10 + date2head->data;
+		date2head = date2head->next;
+	}
+	if (yy1 == yy){
+		if (mm = mm1){
+			return abs(dd1 - dd);
+		}
+		else{
+			sum =(31 -dd) + abs(mm1 - mm) * 30+(31-dd1);
+			return sum;
+		}
+	}
 }
