@@ -27,8 +27,52 @@ struct node{
 	int data;
 	struct node *next;
 };
+int checkValid(node * dob){
+	if (dob == NULL)return -1;
+	int dd=0, mm=0, yy=0, i=3;
+	dd = dob->data;
+	dob = dob->next;
+	dd = dd * 10 + dob->data;
+	mm = dob->data;
+	dob = dob->next;
+	mm = mm * 10 + dob->data;
+	dob = dob->next;
+	while (dob!=NULL){
+		yy = yy * 10 + dob->data;
+		dob = dob->next;
+	}
+	if (yy % 4 == 0){
+		if (mm == 2){
+			if (dd <= 0 || dd>29)return -1;
+		}
+	}
+	else{
+		if (mm = 2){
+			if (dd <= 0 || dd>28)return -1;
+		}
+	}
+	if (dd <= 0 || dd>31 || mm <= 0 || mm>12 || yy <= 0 || yy>9999)
+		return -1;
+	else return 0;
 
+}
 
 int between_days(struct node *date1head, struct node *date2head){
-	return -1;
+	int res1, res2;
+	int dd = 0, mm = 0, yy = 0, i = 3;
+	res1 = checkValid(date1head);
+	res2 = checkValid(date2head);
+	if (res1 == -1 || res2 == -1)return -1;
+	dd = date1head->data;
+	date1head = date1head->next;
+	dd = dd * 10 + date1head->data;
+	mm = date1head->data;
+	date1head = date1head->next;
+	mm = mm * 10 + date1head->data;
+	date1head = date1head->next;
+	while (date1head != NULL){
+		yy = yy * 10 + date1head->data;
+		date1head = date1head->next;
+	}
+	
 }
