@@ -90,7 +90,7 @@ int between_days(struct node *date1head, struct node *date2head){
 	}
 	if (yy1 == yy){
 		if (mm = mm1){
-			return abs(dd1 - dd);
+			return (abs(dd1 - dd)-1);
 		}
 		else{
 			sum =(31 -dd) + abs(mm1 - mm) * 30+(31-dd1);
